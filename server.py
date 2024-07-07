@@ -1,16 +1,19 @@
-import configparser
+import yaml
 
-config = configparser.ConfigParser()
-config.read('config.ini')
+with open('config.yaml', 'r') as file:
+    config = yaml.safe_load(file)
 
-server_ip = config['DEFAULT']['ServerIPAddress']
+run_localhost = config['run_localhost']
 
 class Server:
     def __init__(self):
-        self.server_ip = server_ip
+        self.run_localhost = run_localhost
 
     def start(self):
-        print(f"Server starting at {self.server_ip}")
+        if self.run_localhost:
+            print("Error: Running on localhost is not allowed.")
+        else:
+            print("Server starting...")
 
 if __name__ == "__main__":
     server = Server()
