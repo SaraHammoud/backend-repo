@@ -29,3 +29,5 @@ with open(config_file, 'r') as f:
 server_ip = config.get('ip_address')
 
 print(f"Connecting to server at IP address: {server_ip}")
+
+print("test test")
